@@ -21,7 +21,7 @@ public final class ChatRadius extends JavaPlugin implements Listener {
         chatRadiusConfigHandler.loadConfig();
         radius = Double.parseDouble(chatRadiusConfigHandler.chatRadiusConfig.getString("radius"));
 
-        getLogger().info("Chat Radius loaded." + radius);
+        getLogger().info("Chat Radius loaded.");
     }
 
     @Override
@@ -45,7 +45,6 @@ public final class ChatRadius extends JavaPlugin implements Listener {
             // Remove the recipient if they are out of the radius.
             if(recipientDistance > radius && !recipient.hasPermission("chatradius.spy")) {
                 event.getRecipients().remove(recipient);
-                recipient.kickPlayer("test");
             }
         }
     }
