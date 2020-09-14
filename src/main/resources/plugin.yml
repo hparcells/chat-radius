@@ -2,3 +2,6 @@ name: ChatRadius
 version: ${project.version}
 main: com.netlify.hparcells.chatradius.ChatRadius
 api-version: 1.16
+permissions:
+  chatradius.spy:
+    description: Able to hear all chats regaurdless of radius.

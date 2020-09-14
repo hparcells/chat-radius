@@ -14,10 +14,14 @@ public final class ChatRadius extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        // Load the events.
+        getServer().getPluginManager().registerEvents(this, this);
+
+        // Load the config.
         chatRadiusConfigHandler.loadConfig();
         radius = Double.parseDouble(chatRadiusConfigHandler.chatRadiusConfig.getString("radius"));
 
-        getLogger().info("Chat Radius loaded.");
+        getLogger().info("Chat Radius loaded." + radius);
     }
 
     @Override
@@ -34,15 +38,14 @@ public final class ChatRadius extends JavaPlugin implements Listener {
         for(Player recipient : Bukkit.getOnlinePlayers()) {
             // Check distance to sender.
             double recipientDistance = Math.sqrt(
-                Math.pow((recipient.getLocation().getX() - sender.getLocation().getX()), 2)
-                + Math.pow((recipient.getLocation().getY() - sender.getLocation().getY()), 2)
+                Math.pow(recipient.getLocation().getX() - sender.getLocation().getX(), 2)
+                + Math.pow(recipient.getLocation().getZ() - sender.getLocation().getZ(), 2)
             );
 
-            getLogger().info("h: " + recipientDistance);
-
             // Remove the recipient if they are out of the radius.
-            if(recipientDistance < radius) {
+            if(recipientDistance > radius && !recipient.hasPermission("chatradius.spy")) {
                 event.getRecipients().remove(recipient);
+                recipient.kickPlayer("test");
             }
         }
     }
