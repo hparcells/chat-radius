@@ -1,0 +1,4 @@
+name: ChatRadius
+version: ${project.version}
+main: com.netlify.hparcells.chatradius.ChatRadius
+api-version: 1.16

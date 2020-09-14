@@ -1,0 +1,2 @@
+# The distance, in blocks, in which players can hear other players' chats.
+radius: 180.0
