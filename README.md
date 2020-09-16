@@ -12,4 +12,4 @@ Chat Radius is a Minecraft plugin to limit the distance players can hear other p
 3. (Optional) Change the chat radius distance in the server's `plugins/ChatRadius/config.yml` file.
 
 ## Permissions
-Coming soon!
+- `chatradius.spy`: Able to hear all chats regardless of radius.

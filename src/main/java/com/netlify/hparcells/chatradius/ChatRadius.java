@@ -17,6 +17,9 @@ public final class ChatRadius extends JavaPlugin implements Listener {
         // Load the events.
         getServer().getPluginManager().registerEvents(this, this);
 
+        // Register the command executor.
+        this.getCommand("cr").setExecutor(new ChatRadiusCommandExecutor(this));
+
         // Load the config.
         chatRadiusConfigHandler.loadConfig();
         radius = Double.parseDouble(chatRadiusConfigHandler.chatRadiusConfig.getString("radius"));
